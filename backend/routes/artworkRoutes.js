@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const getArtworkById = require('../controllers/artworkController')
-const getArtworks = require('../controllers/artworkController')
+const { getArtworks, getArtworkById, deleteArtwork, createArtwork, updateArtwork } = require('../controllers/artworkController')
+const protect = require('../middleware/authMiddleware')
+const admin = require('../middleware/authMiddleware')
 
-router.route('/').get(getArtworks)
-router.route('/:id').get(getArtworkById)
+router.route('/').get(getArtworks).post(protect, admin, createArtwork)
+router.route('/:id').get(getArtworkById).delete(protect, admin, deleteArtwork).put(protect, admin, updateArtwork)
 
 module.exports = router

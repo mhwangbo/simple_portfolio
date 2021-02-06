@@ -25,7 +25,7 @@ const CollectionScreen = () => {
                     <div className="content-wrapper">
                         {artworks.map((artwork) => (
                             <div className="scroll-child" key={artwork.image}>
-                                <img src={artwork.image} alt={artwork.image} width="400" />
+                                <img src={artwork.image} alt={artwork.image} width="300" />
                             </div>
                         ))}
                     </div>

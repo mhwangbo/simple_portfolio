@@ -5,6 +5,10 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import CollectionScreen from './screens/CollectionScreen'
 import AboutScreen from './screens/AboutScreen'
+import LoginScreen from './screens/LoginScreen'
+import ManageArtworkScreen from './screens/ManageArtworkScreen'
+import ArtworkEditScreen from './screens/ArtworkEditScreen'
+import ArtworkCreateScreen from './screens/ArtworkCreateScreen'
 
 const App = () => {
   return (
@@ -15,6 +19,10 @@ const App = () => {
           <Route path='/' component={CollectionScreen} exact />
           <Route path='/collection' component={CollectionScreen} />
           <Route path='/about' component={AboutScreen} />
+          <Route path='/admin/login' component={LoginScreen} />
+          <Route path='/admin/artworksList' component={ManageArtworkScreen} />
+          <Route path='/admin/artworks/:id/edit' component={ArtworkEditScreen} />
+          <Route path='/admin/artworks/create' component={ArtworkCreateScreen} />
         </Container>
       </main>
       <Footer />

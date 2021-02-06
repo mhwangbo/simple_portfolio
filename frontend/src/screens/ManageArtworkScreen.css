@@ -1,0 +1,32 @@
+.rotateimg90 {
+  -webkit-transform:rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+table {
+  table-layout: fixed;
+  max-width: 650px;
+}
+
+.artwork-view {
+  width: 150px;
+  overflow: hidden;
+}
+
+.artwork-name {
+  width: 400px;
+  overflow: hidden;
+}
+
+.artwork-options {
+  width: 30px;
+  overflow: hidden;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
