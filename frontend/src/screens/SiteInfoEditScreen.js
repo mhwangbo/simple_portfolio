@@ -7,8 +7,10 @@ import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { listSites, updateSite } from '../actions/siteActions'
 import { SITE_UPDATE_RESET } from '../constants/siteConstants'
+import RichTextEditor from 'react-rte';
 
 const SiteInfoEditScreen = () => {
+    const [value, setValue] = useState(RichTextEditor.createEmptyValue())
     const [name, setName] = useState('')
     const [detail, setDetail] = useState('')
     const [description, setDescription] = useState('')
@@ -39,6 +41,7 @@ const SiteInfoEditScreen = () => {
             setDescription(sites[0].description)
             setKeywords(sites[0].keywords)
             setLogo(sites[0].logo)
+            setValue(RichTextEditor.createValueFromString(detail, 'html'))
         }
     }, [dispatch, sites, successUpdate])
 
@@ -77,6 +80,11 @@ const SiteInfoEditScreen = () => {
         }
     }
 
+    const onChangeHandler = (val) => {
+        setValue(val)
+        setDetail(val.toString('html'))
+    }
+
     return (
         <>
             <FormContainer>
@@ -98,17 +106,17 @@ const SiteInfoEditScreen = () => {
                             </Form.Group>
                             <Form.Group controlId='detail'>
                                 <Form.Label>Site Detail</Form.Label>
-                                <Form.Control
-                                    type='name'
-                                    placeholder='Enter detail'
-                                    value={detail}
-                                    onChange={(e) => setDetail(e.target.value)}
-                                ></Form.Control>
+                                <div>
+                                    <RichTextEditor
+                                        value={value}
+                                        onChange={onChangeHandler}
+                                    />
+                                </div>
                             </Form.Group>
                             <Form.Group controlId='description'>
                                 <Form.Label>Short description</Form.Label>
                                 <Form.Control
-                                    type='name'
+                                    type='text'
                                     placeholder='Enter short description'
                                     value={description}
                                     onChange={(e) => setDescription(e.target.value)}
@@ -117,7 +125,7 @@ const SiteInfoEditScreen = () => {
                             <Form.Group controlId='keywords'>
                                 <Form.Label>Keywords</Form.Label>
                                 <Form.Control
-                                    type='name'
+                                    type='text'
                                     placeholder='Enter keywords'
                                     value={keywords}
                                     onChange={(e) => setKeywords(e.target.value)}
@@ -125,7 +133,9 @@ const SiteInfoEditScreen = () => {
                                 <div>*Enter each keyword separated by comma</div>
                             </Form.Group>
                             <Form.Group controlId='logo'>
-                                <img src={logo} alt={logo} width='50' height='50' />
+                                <div>
+                                    <img src={logo} alt={logo} width='50' height='50' />
+                                </div>
                                 <Form.Label>Logo</Form.Label>
                                 <Form.Control
                                     type='text'

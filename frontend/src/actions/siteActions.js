@@ -19,6 +19,7 @@ export const listSites = () => async (dispatch) => {
             type: SITE_LIST_SUCCESS,
             payload: data
         })
+        localStorage.setItem('siteInfo', JSON.stringify(data))
     } catch (error) {
         dispatch({
             type: SITE_LIST_FAIL,

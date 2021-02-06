@@ -12,6 +12,11 @@ import ArtworkCreateScreen from './screens/ArtworkCreateScreen'
 import SiteInfoScreen from './screens/SiteInfoEditScreen'
 
 const App = () => {
+
+  window.onunload = () => {
+    window.localStorage.clear()
+  }
+
   return (
     <Router>
       <Header />
