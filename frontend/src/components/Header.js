@@ -22,7 +22,7 @@ const Header = () => {
                         {userInfo && userInfo.isAdmin && (
                             <NavDropdown title='Admin' id='adminmenu'>
                                 <NavDropdown.Item href='/admin/artworksList'>Manage Artworks</NavDropdown.Item>
-                                <NavDropdown.Item href='/admin/profile'>Edit Profile</NavDropdown.Item>
+                                <NavDropdown.Item href='/admin/siteinfo'>Edit Site Info</NavDropdown.Item>
                                 <NavDropdown.Item href='/' onClick={logoutHandler}>Logout</NavDropdown.Item>
                             </NavDropdown>
                         )}

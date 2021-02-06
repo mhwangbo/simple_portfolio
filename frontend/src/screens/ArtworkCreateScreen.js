@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,6 +12,7 @@ import FormContainer from '../components/FormContainer'
 const ArtworkCreateScreen = ({ match, history }) => {
     const [name, setName] = useState('')
     const [image, setImage] = useState('')
+    const [uploading, setUploading] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -36,6 +38,30 @@ const ArtworkCreateScreen = ({ match, history }) => {
         dispatch(createArtwork(name, image))
     }
 
+    const uploadFileHandler = async (e) => {
+        const file = e.target.files[0]
+        const formData = new FormData()
+        formData.append('image', file)
+        setUploading(true)
+
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+
+            const { data } = await axios.post('/api/upload', formData, config)
+
+            setImage(data)
+            setUploading(false)
+        } catch (error) {
+            console.error(error)
+            setUploading(false)
+        }
+
+    }
+
     return (
         <>
             <Link to='/admin/artworksList' className='btn my-3'>
@@ -43,6 +69,9 @@ const ArtworkCreateScreen = ({ match, history }) => {
             </Link>
             <FormContainer>
                 <h1>Add Artwork</h1>
+                {image &&
+                    <img className='rotateimg90 py-4' src={image} alt={image} width='200' />
+                }
                 {loadingCreate && <Loader />}
                 {errorCreate && <Message variant='danger'>{errorCreate}</Message>}
                 <Form onSubmit={createArtworkHandler}>
@@ -63,6 +92,9 @@ const ArtworkCreateScreen = ({ match, history }) => {
                             value={image}
                             onChange={(e) => setImage(e.target.value)}
                         ></Form.Control>
+                        <Form.File id='image-file' label='Choose File' custom onChange={uploadFileHandler}></Form.File>
+                        <div>*Please rotate your image 90CW before upload.</div>
+                        {uploading && <Loader />}
                     </Form.Group>
                     <Button type="submit" variant="primary">
                         Add

@@ -102,6 +102,7 @@ const ArtworkEditScreen = ({ match, history }) => {
                                     onChange={(e) => setImage(e.target.value)}
                                 ></Form.Control>
                                 <Form.File id='image-file' label='Choose File' custom onChange={uploadFileHandler}></Form.File>
+                                <div>*Please rotate your image 90CW before upload.</div>
                                 {uploading && <Loader />}
                             </Form.Group>
                             <Button type="submit" variant="primary">

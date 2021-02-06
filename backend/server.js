@@ -7,6 +7,7 @@ const { notFound, errorHandler } = require('./middleware/errorMiddleware')
 const artworkRoutes = require('./routes/artworkRoutes')
 const userRoutes = require('./routes/userRoutes')
 const uploadRoutes = require('./routes/uploadRoutes')
+const siteRoutes = require('./routes/siteRoutes')
 
 dotenv.config()
 
@@ -18,6 +19,7 @@ app.use(express.json())
 app.use('/api/artworks', artworkRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/upload', uploadRoutes)
+app.use('/api/site', siteRoutes)
 
 __dirname = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))

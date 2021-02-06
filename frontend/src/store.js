@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { artworkListReducer, artworkDeleteReducer, artworkDetailsReducer, artworkCreateReducer, artworkUpdateReducer } from './reducers/artworkReducers'
 import { userLoginReducer } from './reducers/userReducers'
+import { siteListReducer, siteUpdateReducer } from './reducers/siteReducers'
 
 const reducer = combineReducers({
     artworkList: artworkListReducer,
@@ -10,7 +11,9 @@ const reducer = combineReducers({
     artworkDelete: artworkDeleteReducer,
     artworkDetails: artworkDetailsReducer,
     artworkCreate: artworkCreateReducer,
-    artworkUpdate: artworkUpdateReducer
+    artworkUpdate: artworkUpdateReducer,
+    siteList: siteListReducer,
+    siteUpdate: siteUpdateReducer,
 })
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

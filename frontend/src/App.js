@@ -9,6 +9,7 @@ import LoginScreen from './screens/LoginScreen'
 import ManageArtworkScreen from './screens/ManageArtworkScreen'
 import ArtworkEditScreen from './screens/ArtworkEditScreen'
 import ArtworkCreateScreen from './screens/ArtworkCreateScreen'
+import SiteInfoScreen from './screens/SiteInfoEditScreen'
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path='/admin/artworksList' component={ManageArtworkScreen} />
           <Route path='/admin/artworks/:id/edit' component={ArtworkEditScreen} />
           <Route path='/admin/artworks/create' component={ArtworkCreateScreen} />
+          <Route path='/admin/siteinfo' component={SiteInfoScreen} />
         </Container>
       </main>
       <Footer />
