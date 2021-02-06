@@ -13,9 +13,9 @@ import SiteInfoScreen from './screens/SiteInfoEditScreen'
 
 const App = () => {
 
-  window.onunload = () => {
-    window.localStorage.clear()
-  }
+  // window.onunload = () => {
+  //   window.sessionStorage.clear()
+  // }
 
   return (
     <Router>

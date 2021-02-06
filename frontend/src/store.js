@@ -16,12 +16,12 @@ const reducer = combineReducers({
     siteUpdate: siteUpdateReducer,
 })
 
-const userInfoFromStorage = localStorage.getItem('userInfo')
-    ? JSON.parse(localStorage.getItem('userInfo'))
+const userInfoFromStorage = sessionStorage.getItem('userInfo')
+    ? JSON.parse(sessionStorage.getItem('userInfo'))
     : null
 
-const siteInfoFromStorage = localStorage.getItem('siteInfo')
-    ? JSON.parse(localStorage.getItem('siteInfo'))
+const siteInfoFromStorage = sessionStorage.getItem('siteInfo')
+    ? JSON.parse(sessionStorage.getItem('siteInfo'))
     : null
 
 const initialState = {
