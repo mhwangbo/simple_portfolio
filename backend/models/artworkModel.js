@@ -1,0 +1,14 @@
+const mongoose = require('mongoose')
+
+const artworkSchema = mongoose.Schema({
+    image: {
+        type: String,
+        required: true
+    }
+}, {
+    timestamps: true
+})
+
+const Artwork = mongoose.model('Artwork', artworkSchema)
+
+module.exports = Artwork
