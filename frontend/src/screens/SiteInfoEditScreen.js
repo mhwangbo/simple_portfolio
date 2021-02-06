@@ -9,7 +9,7 @@ import { listSites, updateSite } from '../actions/siteActions'
 import { SITE_UPDATE_RESET } from '../constants/siteConstants'
 import RichTextEditor from 'react-rte';
 
-const SiteInfoEditScreen = () => {
+const SiteInfoEditScreen = ({ history }) => {
     const [value, setValue] = useState(RichTextEditor.createEmptyValue())
     const [name, setName] = useState('')
     const [detail, setDetail] = useState('')
@@ -55,6 +55,8 @@ const SiteInfoEditScreen = () => {
             keywords,
             logo
         }))
+        sessionStorage.removeItem('siteInfo')
+        history.push('/')
     }
 
     const uploadFileHandler = async (e) => {
